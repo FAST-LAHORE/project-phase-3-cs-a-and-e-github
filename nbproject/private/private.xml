@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/project-phase-3-cs-a-and-e-github-master/src/github/Github.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/project-phase-3-cs-a-and-e-github-master/src/github/Branch.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/project-phase-3-cs-a-and-e-github-master/src/github/Comment.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/project-phase-3-cs-a-and-e-github-master/src/github/CreateAccount.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/project-phase-3-cs-a-and-e-github-master/src/github/User.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/project-phase-3-cs-a-and-e-github-master/src/github/Commit.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/UnStaged.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/InternalRepository.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Repository.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/ExternalRepository.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Files.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Branch.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Staged.java</file>
         </group>
     </open-files>
 </project-private>
