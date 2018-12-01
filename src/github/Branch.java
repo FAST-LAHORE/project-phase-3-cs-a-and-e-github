@@ -22,11 +22,12 @@ public class Branch {
     List<Commit> commits;
     
     
-    //Add();
+
     //Check();  
     //History();
     //AddNewFile();
     //FindFile();
     //AddToStage();
     //DeleteFile();  
+	//Add();
 }
