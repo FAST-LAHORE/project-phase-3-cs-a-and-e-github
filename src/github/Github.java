@@ -16,10 +16,5 @@ public class Github {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Branch B =new Branch();
-        B.AddNewFilefunc();
-        
-        
-    }
-    
+   }
 }

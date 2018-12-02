@@ -30,6 +30,10 @@ public class Branch {
         filenew.setVisible(true);
         
     }
+    public void DeleteFilefunc(){
+        DeleteFile delfile=new DeleteFile();
+        delfile.setVisible(true);
+    }
 
     //Check();  
     //History();
