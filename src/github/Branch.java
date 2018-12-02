@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author ranas
+ * @author maria
  */
 public class Branch {
     
@@ -20,8 +20,16 @@ public class Branch {
     UnStaged unstaged;
     Staged staged;
     List<Commit> commits;
+
+    public String getName() {
+        return name;
+    }
     
-    
+    public void AddNewFilefunc(){
+        AddNewFile filenew=new AddNewFile();
+        filenew.setVisible(true);
+        
+    }
 
     //Check();  
     //History();

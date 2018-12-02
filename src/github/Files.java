@@ -13,5 +13,9 @@ public class Files {
     
     private String name;
     private int Modifies;
+
+    public Files(String name) {
+        this.name = name;
+    }
     
 }
