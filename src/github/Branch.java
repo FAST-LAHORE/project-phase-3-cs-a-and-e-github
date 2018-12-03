@@ -5,6 +5,7 @@
  */
 package github;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,9 +21,17 @@ public class Branch {
     UnStaged unstaged;
     Staged staged;
     List<Commit> commits;
-    
-    
+  
 
+    public void showUnstage() throws IOException, InterruptedException
+    {
+        unstaged= new UnStaged();
+        //u.setVisible(true);
+        unstaged.watch=true;
+        unstaged.stageChange("D:\\TestStage");   
+  
+    }
+   
     //Check();  
     //History();
     //AddNewFile();

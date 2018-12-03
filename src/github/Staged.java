@@ -15,10 +15,20 @@ import java.util.List;
 public class Staged {
     
     Branch branch;
-    List<String> files=new ArrayList<String>();
+    List<String> files;
     //Commit();
     //CurrentStatus();
 
+    public void stageChange(StagingArea u)
+    {
+        u.UnstageArea.setText(null);
+        for(String s: files)
+        {
+            u.stageArea.append(s +"\n");
+        }
+    }
+    
+    
     public void setBranch(Branch branch) {
         this.branch = branch;
     }
