@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author ranas
+ * @author maria
  */
 public class Branch {
     
@@ -21,7 +21,24 @@ public class Branch {
     UnStaged unstaged;
     Staged staged;
     List<Commit> commits;
+<<<<<<< HEAD
   
+=======
+
+    public String getName() {
+        return name;
+    }
+    
+    public void AddNewFilefunc(){
+        AddNewFile filenew=new AddNewFile();
+        filenew.setVisible(true);
+        
+    }
+    public void DeleteFilefunc(){
+        DeleteFile delfile=new DeleteFile();
+        delfile.setVisible(true);
+    }
+>>>>>>> 9f57ce9a62535c15fa90a8e7a312c8389244813b
 
     public void showUnstage() throws IOException, InterruptedException
     {

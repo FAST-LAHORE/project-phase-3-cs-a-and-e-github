@@ -18,6 +18,7 @@ public class Github {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
+<<<<<<< HEAD
         
         Branch b=new Branch();
         b.showUnstage();
@@ -25,4 +26,7 @@ public class Github {
        // b.stageChanged();
     }
     
+=======
+   }
+>>>>>>> 9f57ce9a62535c15fa90a8e7a312c8389244813b
 }

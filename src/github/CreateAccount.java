@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lenovo
+ * @author maria
  */
 public class CreateAccount extends javax.swing.JFrame {
 
