@@ -21,9 +21,7 @@ public class Branch {
     UnStaged unstaged;
     Staged staged;
     List<Commit> commits;
-<<<<<<< HEAD
-  
-=======
+
 
     public String getName() {
         return name;
@@ -38,7 +36,7 @@ public class Branch {
         DeleteFile delfile=new DeleteFile();
         delfile.setVisible(true);
     }
->>>>>>> 9f57ce9a62535c15fa90a8e7a312c8389244813b
+
 
     public void showUnstage() throws IOException, InterruptedException
     {

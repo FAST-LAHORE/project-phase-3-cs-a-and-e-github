@@ -2,9 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/DeleteFile.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/CreateAccount.java</file>
+            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/HomePage.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/ExternalRepository.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/User.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/UserManagement.java</file>
@@ -19,8 +20,5 @@
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Branch.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/StagingArea.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 9f57ce9a62535c15fa90a8e7a312c8389244813b
     </open-files>
 </project-private>

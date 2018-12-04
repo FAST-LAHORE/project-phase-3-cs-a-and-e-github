@@ -17,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import static javax.swing.UIManager.get;
     
 
@@ -81,7 +83,7 @@ public class UnStaged {
                                  count=0;
 			}
                        // watchKey.reset();
-                       Thread.sleep(1000);
+                       Thread.sleep(500);
                         stgArea.UnstageArea.setText(null);
                         for(String s: files)
                         {
@@ -95,6 +97,8 @@ public class UnStaged {
                             //u.UnstageArea.append(s +"\n");
                             stgArea.stageArea.append(s +"\n");
                         }
+                        JFrame f=new JFrame();  
+                        JOptionPane.showMessageDialog(f,"Hello, Welcome to Javatpoint.");
 }       
         catch (Exception e)
         {
