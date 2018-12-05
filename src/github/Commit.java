@@ -16,7 +16,12 @@ public class Commit {
     private String CommitMessage;
     
     Branch branch;
-    
+    public Commit(String s,int a,String c)
+    {
+        Author=s;
+        CommitID=a;
+        CommitMessage=c;
+    }
     //CommitHistory();
     
 }

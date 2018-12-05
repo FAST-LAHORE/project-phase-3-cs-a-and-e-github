@@ -14,60 +14,68 @@ import java.util.List;
  * @author ranas
  */
 public class Repository {
-    
-    
+
     List<Comment> comments;
     List<Branch> branches;
     private int id;
     private String name;
     private int No_of_Commits;
     public String Address;
-    
+
     //CreateBranch(String Name);
     //ViewHistory();
     //AddComment();
-    
-      public String getName(){
- 
+    public Repository(String n, String ad) {
+            name=n;
+            Commit c=new Commit("salman",12345,"Just Commited");
+            Branch b=new Branch("Master",c);
+            branches.add(b);
+            id=1;
+            No_of_Commits=1;
+            Address=ad;
+    }
+
+    public String getName() {
+
         return name;
     }
 
     public static void deleteBranch(File file) throws IOException {
-        if(file.isDirectory()){
-            
+        if (file.isDirectory()) {
+
             //directory is empty, then delete it
-            if(file.list().length==0){
-                
+            if (file.list().length == 0) {
+
                 file.delete();
                 System.out.println("Directory is deleted : "
                         + file.getAbsolutePath());
-                
-            }else{
-                
+
+            } else {
+
                 //list all the directory contents
                 String files[] = file.list();
-                
+
                 for (String temp : files) {
                     //construct the file structure
                     File fileDelete = new File(file, temp);
-                    
+
                     //recursive delete
                     deleteBranch(fileDelete);
                 }
-                
+
                 //check the directory again, if empty then delete it
-                if(file.list().length==0){
+                if (file.list().length == 0) {
                     file.delete();
                     System.out.println("Directory is deleted : "
                             + file.getAbsolutePath());
                 }
             }
-            
-        }else{
+
+        } else {
             //if file, then delete it
             file.delete();
             System.out.println("File is deleted : " + file.getAbsolutePath());
         }
     }
-    
+
 }
