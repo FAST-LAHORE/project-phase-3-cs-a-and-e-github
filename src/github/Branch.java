@@ -13,7 +13,7 @@ import java.util.List;
  * @author maria
  */
 public class Branch {
-    
+
     private String name;
     private int No_of_Files;
     List<Branch> branches;
@@ -22,31 +22,34 @@ public class Branch {
     Staged staged;
     List<Commit> commits;
 
+    public Branch(String str,Commit c) {
+        this.name = str;
+       this.commits.add(c);
+    }
 
     public String getName() {
         return name;
     }
-    
-    public void AddNewFilefunc(){
-        AddNewFile filenew=new AddNewFile();
+
+    public void AddNewFilefunc() {
+        AddNewFile filenew = new AddNewFile();
         filenew.setVisible(true);
-        
+
     }
-    public void DeleteFilefunc(){
-        DeleteFile delfile=new DeleteFile();
+
+    public void DeleteFilefunc() {
+        DeleteFile delfile = new DeleteFile();
         delfile.setVisible(true);
     }
 
-
-    public void showUnstage() throws IOException, InterruptedException
-    {
-        unstaged= new UnStaged();
+    public void showUnstage() throws IOException, InterruptedException {
+        unstaged = new UnStaged();
         //u.setVisible(true);
-        unstaged.watch=true;
-        unstaged.stageChange("D:\\TestStage");   
-  
+        unstaged.watch = true;
+        unstaged.stageChange("D:\\TestStage");
+
     }
-   
+
     //Check();  
     //History();
     //AddNewFile();
