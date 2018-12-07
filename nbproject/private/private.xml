@@ -3,22 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/DeleteFile.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/CreateAccount.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/HomePage.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/ExternalRepository.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/User.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/UserManagement.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Staged.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/UnStaged.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/InternalRepository.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Commit.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Comment.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Github.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Repository.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Files.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Branch.java</file>
-            <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/StagingArea.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/InternalRepository.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/ExternalRepository.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/DeleteFile.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/Login.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/Github.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/UserManagement.java</file>
+            <file>file:/C:/Users/Abdul%20Rehman/Documents/Semester%205/OOAD/Project/Project%20Github/Github/src/github/MainPage.java</file>
         </group>
     </open-files>
 </project-private>

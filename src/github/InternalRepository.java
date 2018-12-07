@@ -10,7 +10,7 @@ package github;
  * @author ranas
  */
 public class InternalRepository extends Repository{
-    
-    
+
+      
     //Push();
 }
