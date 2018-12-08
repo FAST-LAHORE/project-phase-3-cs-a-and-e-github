@@ -176,6 +176,10 @@ public class MainPage extends javax.swing.JFrame {
             public void run() {
             Login l=new Login();
             l.setVisible(true);
+//            Comment c=new Comment();
+//            c.Add("Testing this usecase", "github");
+//            String g="github";
+//            c.ViewComment(g);
         
                 //new MainPage().setVisible(true);
             }

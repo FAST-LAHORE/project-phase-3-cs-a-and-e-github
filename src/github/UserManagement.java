@@ -7,6 +7,7 @@ package github;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,6 +29,7 @@ public class UserManagement {
    
     Connection conn= null;
     Statement st= null;
+    PreparedStatement ps = null;
     ResultSet rs = null;
     public UserManagement() {
     }
