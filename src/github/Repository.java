@@ -16,9 +16,9 @@ import java.util.List;
 public class Repository {
 
     List<Comment> comments;
-    List<Branch> branches;
+    List<Branch> branches=new ArrayList<Branch>();
     private int id;
-    private String name;
+    String name;
     private int No_of_Commits;
     public String Address;
 
