@@ -7,7 +7,9 @@ package github;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Vector;
 import javax.swing.JFrame;
+import javax.swing.JList;
 
 /**
  *
@@ -18,6 +20,8 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
+    List<Repository> repss=new ArrayList<Repository>();
+    public User currUser;
     public MainPage() {
         initComponents();
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -28,6 +32,21 @@ public class MainPage extends javax.swing.JFrame {
         // homepagepic.setSize(screenSize.width, screenSize.height);
         // homepagepic.setBounds(0,0,screenSize.width, screenSize.height);
        // this.setVisible(true);
+    }
+public MainPage(List<Repository> rr,User uuu) {
+        initComponents();
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+         setBounds(0,0,screenSize.width-15, screenSize.height-45);
+        repss=rr;
+        Repository curr=null;
+       String[] data = new String[10];
+        for (int i = 0; i < repss.size(); i++) {
+            curr=repss.get(i);
+            data[i]=curr.name;
+        }
+       // loc.setListData(data);
+        System.out.println(curr.name);
     }
 
     /**
@@ -143,6 +162,14 @@ public class MainPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        
+        createRepo cr=new createRepo(repss,currUser);
+        
+        cr.setVisible(true);
+        this.dispose();
+    }   
 
     /**
      * @param args the command line arguments
