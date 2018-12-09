@@ -43,8 +43,8 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
-    public static String currRepository = null;
-    public static String currBranch = null;
+    public String currRepository = null;
+    public String currBranch = null;
     List<Repository> repss = new ArrayList<Repository>();
     Repository currrep = null;
     public User currUserr;
@@ -110,14 +110,14 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        deleteBranch = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         createB = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         btnMonitorBranch = new javax.swing.JMenuItem();
-        Addfiles = new javax.swing.JMenuItem();
-        Delfile = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         btnPullBranch = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -168,8 +168,13 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem4.setText("Clone Repository");
         jMenu1.add(jMenuItem4);
 
-        jMenuItem13.setText("Delete Branch");
-        jMenu1.add(jMenuItem13);
+        deleteBranch.setText("Delete Branch");
+        deleteBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBranchActionPerformed(evt);
+            }
+        });
+        jMenu1.add(deleteBranch);
 
         jMenuItem14.setText("Find File");
         jMenu1.add(jMenuItem14);
@@ -202,7 +207,6 @@ public class MainPage extends javax.swing.JFrame {
         });
         jMenu2.add(btnMonitorBranch);
 
-<<<<<<< HEAD
         jMenuItem6.setText("Add New File");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,23 +214,9 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem6);
-=======
-        Addfiles.setText("Add New File");
-        Addfiles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddfilesActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Addfiles);
->>>>>>> eb3361feaabb7666ab7fdc95153388622d5916b2
 
-        Delfile.setText("Delete File");
-        Delfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DelfileActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Delfile);
+        jMenuItem7.setText("Delete File");
+        jMenu2.add(jMenuItem7);
 
         btnPullBranch.setText("Pull Branch");
         btnPullBranch.addActionListener(new java.awt.event.ActionListener() {
@@ -288,23 +278,15 @@ public class MainPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnMonitorBranchActionPerformed
 
-<<<<<<< HEAD
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-=======
-    private void AddfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddfilesActionPerformed
-        // TODO add your handling code here:
-        AddNewFile addf=new AddNewFile();
-        addf.setVisible(true);
-    }//GEN-LAST:event_AddfilesActionPerformed
 
-    private void DelfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelfileActionPerformed
-        // TODO add your handling code here:
-        DeleteFile dil=new DeleteFile();
-        dil.setVisible(true);
-    }//GEN-LAST:event_DelfileActionPerformed
->>>>>>> eb3361feaabb7666ab7fdc95153388622d5916b2
+    private void deleteBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBranchActionPerformed
+        
+         DeleteBranch d=new DeleteBranch();
+         d.setVisible(true);
+    }//GEN-LAST:event_deleteBranchActionPerformed
     public void retrieve() throws SQLException {
         //Connection con = null;
         //Statement stat = null;
@@ -359,11 +341,10 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Addfiles;
-    private javax.swing.JMenuItem Delfile;
     private javax.swing.JMenuItem btnMonitorBranch;
     private javax.swing.JMenuItem btnPullBranch;
     private javax.swing.JMenuItem createB;
+    private javax.swing.JMenuItem deleteBranch;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -373,7 +354,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem18;
@@ -381,5 +361,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
