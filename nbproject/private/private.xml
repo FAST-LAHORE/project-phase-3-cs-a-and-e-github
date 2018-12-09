@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/DeleteFile.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/CreateAccount.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/MainPage.java</file>
@@ -28,6 +29,11 @@
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Repository.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/Branch.java</file>
             <file>file:/C:/Users/ranas/Documents/NetBeansProjects/github/src/github/StagingArea.java</file>
+=======
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Projectgit/Projectgithubbb/src/github/MainPage.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Projectgit/Projectgithubbb/src/github/AddNewFile.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Projectgit/Projectgithubbb/src/github/DeleteFile.java</file>
+>>>>>>> eb3361feaabb7666ab7fdc95153388622d5916b2
         </group>
     </open-files>
 </project-private>
