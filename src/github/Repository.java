@@ -7,6 +7,7 @@ package github;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,9 +17,9 @@ import java.util.List;
 public class Repository {
 
     List<Comment> comments;
-    List<Branch> branches;
+    List<Branch> branches=new ArrayList<Branch>();
     private int id;
-    private String name;
+    String name;
     private int No_of_Commits;
     public String Address;
 
@@ -26,25 +27,25 @@ public class Repository {
     //ViewHistory();
     //AddComment();
     public Repository(String n, String ad) {
-            name=n;
-            Commit c=new Commit("salman",12345,"Just Commited");
-            Branch b=new Branch("Master",c);
-            branches.add(b);
-            id=1;
-            No_of_Commits=1;
-            Address=ad;
+        comments=null;
+        name = n;
+        Commit c = new Commit("salman", 12345, "Just Commited");
+        Branch b = new Branch("Master",c);
+        branches.add(b);
+        id = 1;
+        No_of_Commits = 1;
+        Address = ad;
     }
 
     public String getName() {
-
         return name;
     }
-    
-     public void AddComment(String comment)
-    {
-        Comment c=new Comment();
-        c.Add(comment,this.name);
-        comments.add(c);
+
+    Branch CreateBranch(String Name) {
+        Commit c = new Commit("salman", 12346, "Just Commited");
+        Branch b = new Branch(Name,c);
+        branches.add(b);
+        return b;
     }
 
     public static void deleteBranch(File file) throws IOException {

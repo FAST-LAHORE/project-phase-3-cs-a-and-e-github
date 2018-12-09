@@ -47,7 +47,9 @@ public class StagingArea extends javax.swing.JFrame {
         MainPanel.setForeground(new java.awt.Color(255, 255, 255));
 
         UnstageArea.setEditable(false);
+        UnstageArea.setBackground(new java.awt.Color(153, 153, 153));
         UnstageArea.setColumns(20);
+        UnstageArea.setForeground(new java.awt.Color(255, 255, 255));
         UnstageArea.setRows(5);
         jScrollPane1.setViewportView(UnstageArea);
 
@@ -62,7 +64,9 @@ public class StagingArea extends javax.swing.JFrame {
         jLabel2.setText("Stage Changes (Will Commit)");
 
         stageArea.setEditable(false);
+        stageArea.setBackground(new java.awt.Color(153, 153, 153));
         stageArea.setColumns(20);
+        stageArea.setForeground(new java.awt.Color(255, 255, 255));
         stageArea.setRows(5);
         jScrollPane2.setViewportView(stageArea);
 
@@ -70,7 +74,7 @@ public class StagingArea extends javax.swing.JFrame {
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -96,33 +100,42 @@ public class StagingArea extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        stageBtn.setBackground(new java.awt.Color(0, 0, 0));
         stageBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        stageBtn.setForeground(new java.awt.Color(255, 255, 255));
         stageBtn.setText("Stage Change");
+        stageBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         stageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stageBtnActionPerformed(evt);
             }
         });
 
+        btnCommit.setBackground(new java.awt.Color(0, 0, 0));
+        btnCommit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCommit.setForeground(new java.awt.Color(255, 255, 255));
         btnCommit.setText("Commit");
+        btnCommit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        btnCommit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(btnCommit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(82, 82, 82))
+            .addComponent(btnCommit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(stageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(212, 212, 212)
-                .addComponent(stageBtn)
+                .addGap(198, 198, 198)
+                .addComponent(stageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCommit)
+                .addComponent(btnCommit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -133,16 +146,12 @@ public class StagingArea extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -155,6 +164,10 @@ public class StagingArea extends javax.swing.JFrame {
         //UnStaged.threadRunning=false;
         
     }//GEN-LAST:event_stageBtnActionPerformed
+
+    private void btnCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCommitActionPerformed
 
     /**
      * @param args the command line arguments

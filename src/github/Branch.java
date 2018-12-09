@@ -6,6 +6,7 @@
 package github;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +21,17 @@ public class Branch {
     List<Files> files;
     UnStaged unstaged;
     Staged staged;
-    List<Commit> commits;
+    List<Commit> commits=new ArrayList<Commit>();
 
     public Branch(String str,Commit c) {
-        this.name = str;
-       this.commits.add(c);
+        name = str;
+        //commits.add(c);
+        No_of_Files=1;
+        files=null;
+        branches=null;
+        staged=null;
+        unstaged=null;
+        
     }
 
     public String getName() {
