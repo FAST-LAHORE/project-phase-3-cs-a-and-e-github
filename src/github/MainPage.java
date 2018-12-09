@@ -203,6 +203,11 @@ public class MainPage extends javax.swing.JFrame {
         jMenu2.add(btnMonitorBranch);
 
         jMenuItem6.setText("Add New File");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuItem7.setText("Delete File");
@@ -267,6 +272,10 @@ public class MainPage extends javax.swing.JFrame {
        stgArea.setVisible(true);
         
     }//GEN-LAST:event_btnMonitorBranchActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
     public void retrieve() throws SQLException {
         //Connection con = null;
         //Statement stat = null;

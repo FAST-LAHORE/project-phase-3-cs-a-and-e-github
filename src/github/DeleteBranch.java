@@ -5,6 +5,14 @@
  */
 package github;
 
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ranas
@@ -14,10 +22,37 @@ public class DeleteBranch extends javax.swing.JFrame {
     /**
      * Creates new form DeleteBranch
      */
+    public File[] files=null;
+    
     public DeleteBranch() {
         initComponents();
+        showBranches();
+      
+   }
+    
+    public void showBranches()
+    {
+         File dir = new File("D:\\TestStage");
+        files = dir.listFiles();
+       FileFilter fileFilter = new FileFilter() {
+       public boolean accept(File file) {
+            return file.isDirectory();
+         }
+      };
+      files = dir.listFiles(fileFilter);
+      System.out.println(files.length);
+      if (files.length == 0) {
+         System.out.println("Either directory does not exist or is not a directory");
+         JOptionPane.showMessageDialog(rootPane, "No Branches Exists", "Error", HEIGHT);
+      } else {
+          branchesArea.setText(null);
+         for (int i = 0; i< files.length; i++) {
+            File filename = files[i];
+          //  System.out.println(filename.toString());
+          branchesArea.append(filename.toString()+"\n");
+         }
+      }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +64,13 @@ public class DeleteBranch extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        branchesArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        branchName = new javax.swing.JTextField();
+        DeleteBranch = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,32 +78,86 @@ public class DeleteBranch extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
+        branchesArea.setEditable(false);
+        branchesArea.setBackground(new java.awt.Color(204, 204, 204));
+        branchesArea.setColumns(20);
+        branchesArea.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        branchesArea.setRows(5);
+        branchesArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jScrollPane1.setViewportView(branchesArea);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Current Branches");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Enter Branch Name to Delete:");
+
+        branchName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        DeleteBranch.setBackground(new java.awt.Color(0, 0, 0));
+        DeleteBranch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DeleteBranch.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteBranch.setText("Delete Branch");
+        DeleteBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBranchActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("e.g. branch");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(205, 205, 205))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(branchName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(DeleteBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(branchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(DeleteBranch)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,7 +172,42 @@ public class DeleteBranch extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DeleteBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBranchActionPerformed
+        
+         for (int i = 0; i< files.length; i++) {
+            File filename = files[i];
+            try{
+            if(branchName.getText().isEmpty())   
+            {
+                JOptionPane.showMessageDialog(rootPane, "Enter Valid branch name", "Error", HEIGHT);
+                branchName.setText("");
+                break;
+            }
+            if(branchName.getText().equalsIgnoreCase("master"))   
+            {
+                JOptionPane.showMessageDialog(rootPane, "Cannot Delete Master Branch", "Error", HEIGHT);
+                branchName.setText("");
+                break;
+            }
+            if(filename.toString().contains(branchName.getText()))
+            {
+                Repository.deleteBranch(filename);
+                JOptionPane.showMessageDialog(rootPane, "Branch Has been Deleted.", "Success", HEIGHT);
+                branchName.setText("");
+                showBranches();
+                break;
+            }
+         }
+             catch(Exception e)
+              {
+                JOptionPane.showMessageDialog(rootPane, "Invalid Name.", "Error", HEIGHT);
+              }
+      }
+        
+    }//GEN-LAST:event_DeleteBranchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +245,14 @@ public class DeleteBranch extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeleteBranch;
+    private javax.swing.JTextField branchName;
+    private javax.swing.JTextArea branchesArea;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
