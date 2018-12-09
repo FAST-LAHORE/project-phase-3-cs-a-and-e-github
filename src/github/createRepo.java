@@ -31,11 +31,11 @@ public class createRepo extends javax.swing.JFrame {
      */
     List<String> str = new ArrayList<String>();
     List<Repository> repss = new ArrayList<Repository>();
-    public User currUseru=null;
+    public User currUseru = null;
     public String currUser = "salman";
     public String addr = null;
     //public String 
-    Connection con = null;
+    Connection con = null, con2 = null;
     Statement stat = null;
     ResultSet res = null;
 
@@ -51,6 +51,7 @@ public class createRepo extends javax.swing.JFrame {
         user.setText(currUser);
         try {
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/repositories", "salman", "salman");
+            con2 = DriverManager.getConnection("jdbc:derby://localhost:1527/repositories", "salman", "salman");
         } catch (SQLException ex) {
         }
     }
@@ -207,7 +208,9 @@ public class createRepo extends javax.swing.JFrame {
             f.mkdir();
             File f2 = new File(addr + "/" + "Master");
             f2.mkdir();
-            Repository re = new Repository(repoName.getText(), pth.getText());
+            Repository re = new Repository(repoName.getText(), pth.getText()+"/"+repoName.getText());
+            
+            //database implementation
             repss.add(re);
             Statement st = null;
             try {
@@ -227,10 +230,6 @@ public class createRepo extends javax.swing.JFrame {
             try {
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(rootPane, "Repository Already Exists", "Error ", HEIGHT);
-                    //uname.setText("                                  ");
-                    //uemail.setText("                                  ");
-                    //upassword.setText("                                  ");
-                    //JOptionPane.showMessageDialog(rootPane, "YourAccount has been successfuly created", "Successful", HEIGHT);
                 } else {
                     // JOptionPane.showMessageDialog(rootPane, "no User found", "Error ", HEIGHT);
                     JOptionPane.showMessageDialog(rootPane, "Repository created on the Path", "Successful", HEIGHT);
@@ -248,6 +247,34 @@ public class createRepo extends javax.swing.JFrame {
                         lis.add(rs1.getString("repository_name"));
                     }
                      */
+                    String query2 = "SELECT * FROM SALMAN.BRANCHES WHERE Name='" + "Master" + "'and REPO_NAME='" + repoName.getText() + "'";
+                    Statement st2 = null;
+                    try {
+                        st2 = con2.createStatement();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    ResultSet rs2 = null;
+                    try {
+                        rs2 = st2.executeQuery(query2);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        if (rs2.next()) {
+                            JOptionPane.showMessageDialog(rootPane, "Master Branch Already Exists", "Error ", HEIGHT);
+                            //uname.setText("                                  ");
+                            //uemail.setText("                                  ");
+                            //upassword.setText("                                  ");
+                            //JOptionPane.showMessageDialog(rootPane, "YourAccount has been successfuly created", "Successful", HEIGHT);
+                        } else {
+                            Insertdata2();
+
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                     this.setVisible(false);
                     MainPage mp = new MainPage(re, currUseru);
                     mp.setVisible(true);
@@ -256,31 +283,7 @@ public class createRepo extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            String query2 = "SELECT * FROM SALMAN.BRANCHES WHERE Name='" + "Master" + "'and REPO_NAME='" + repoName.getText() + "'";
-            ResultSet rs2 = null;
-            try {
-                rs2 = st.executeQuery(query2);
-            } catch (SQLException ex) {
-                Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                if (rs2.next()) {
-                    //showMessageDialog(rootPane, "Repository Already Exists", "Error ", HEIGHT);
-                    //uname.setText("                                  ");
-                    //uemail.setText("                                  ");
-                    //upassword.setText("                                  ");
-                    //JOptionPane.showMessageDialog(rootPane, "YourAccount has been successfuly created", "Successful", HEIGHT);
-                } else {
-                    PreparedStatement sts = con.prepareStatement("insert into BRANCHES(NAME,ADDRESS,REPO_NAME) values(?,?,?)");
-                    sts.setString(1, "Master");
-                    sts.setString(2, addr+"/"+"Master");
-                    sts.setString(3, repoName.getText());
 
-                    sts.executeUpdate();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
 
 
@@ -305,17 +308,26 @@ public class createRepo extends javax.swing.JFrame {
     public void Insertdata() {
         try {
             String name = repoName.getText();
-            // addr=pth.getText();
-            //paswrd=upassword.getText();
-            //email=uemail.getText();
-            //JOptionPane.showMessageDialog(rootPane, "Entered indata base", "Error Occurs", HEIGHT);
-            PreparedStatement sts = con.prepareStatement("insert into REP(USER_NAME,REPOSITORY_NAME,ADDRESS) values(?,?,?)");
+             PreparedStatement sts = con.prepareStatement("insert into REP(USER_NAME,REPOSITORY_NAME,ADDRESS) values(?,?,?)");
             sts.setString(1, currUser);
             sts.setString(2, name);
             sts.setString(3, addr);
 
             sts.executeUpdate();
             // JOptionPane.showMessageDialog(rootPane, "Entered indata base", "Error Occurs", HEIGHT);
+
+        } catch (SQLException ex) {
+        }
+
+    }
+
+    public void Insertdata2() {
+        try {
+            PreparedStatement sts2 = con2.prepareStatement("insert into BRANCHES(NAME,ADDRESS,REPO_NAME) values(?,?,?)");
+            sts2.setString(1, "Master");
+            sts2.setString(2, addr + "/" + "Master");
+            sts2.setString(3, repoName.getText());
+            sts2.executeUpdate();
 
         } catch (SQLException ex) {
         }
