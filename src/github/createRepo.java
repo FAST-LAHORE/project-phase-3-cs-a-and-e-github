@@ -31,7 +31,7 @@ public class createRepo extends javax.swing.JFrame {
      */
     List<String> str = new ArrayList<String>();
     List<Repository> repss = new ArrayList<Repository>();
-    public User currUseru;
+    public User currUseru=null;
     public String currUser = "salman";
     public String addr = null;
     //public String 
@@ -205,6 +205,8 @@ public class createRepo extends javax.swing.JFrame {
 
             File f = new File(pth.getText() + "/" + repoName.getText());
             f.mkdir();
+            File f2 = new File(addr + "/" + "Master");
+            f2.mkdir();
             Repository re = new Repository(repoName.getText(), pth.getText());
             repss.add(re);
             Statement st = null;
@@ -215,16 +217,14 @@ public class createRepo extends javax.swing.JFrame {
             }
 
             String query = "SELECT * FROM SALMAN.REP WHERE USER_NAME='" + currUser + "'and REPOSITORY_NAME='" + repoName.getText() + "'";
-            //  String query = "SELECT * FROM Users WHERE Name='"+name+ "'and Email='"+email+"'";
             ResultSet rs = null;
             try {
                 rs = st.executeQuery(query);
             } catch (SQLException ex) {
                 Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
             }
+
             try {
-                // System.out.println(rs);
-                //String firstName = rs.getString("first_name");
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(rootPane, "Repository Already Exists", "Error ", HEIGHT);
                     //uname.setText("                                  ");
@@ -235,26 +235,52 @@ public class createRepo extends javax.swing.JFrame {
                     // JOptionPane.showMessageDialog(rootPane, "no User found", "Error ", HEIGHT);
                     JOptionPane.showMessageDialog(rootPane, "Repository created on the Path", "Successful", HEIGHT);
                     Insertdata();
-                    /*String query2 = "SELECT REPOSITORY_NAME FROM SALMAN.REP WHERE REPOSITORY_NAME='" + currUser + "'";
-                    //str.add();
-                    ResultSet rs1 = null;
-                    try {
-                        rs1 = st.executeQuery(query);
-                        System.out.println(rs1.getArray("REPOSITORY_NAME"));
-                        
-                    } catch (SQLException ex) {
-                        Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
+                    //ResultSet rs1 = null;
+                    //PreparedStatement ptmt=null;
+
+                    /* String query2 = "SELECT REPOSITORY_NAME FROM SALMAN.REP WHERE USER_NAME=?";
+                    ptmt=con.prepareStatement(query2);
+                    ptmt.setString(1, currUser);
+                    rs1=ptmt.executeQuery();
+                    List<String> lis=new ArrayList<String>();//This list contains all the reposiotries
+                    while(rs1.next())
+                    {
+                        lis.add(rs1.getString("repository_name"));
                     }
-                    */
+                     */
                     this.setVisible(false);
-                    MainPage mp = new MainPage(repss, currUseru);
+                    MainPage mp = new MainPage(re, currUseru);
                     mp.setVisible(true);
 
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
             }
+            String query2 = "SELECT * FROM SALMAN.BRANCHES WHERE Name='" + "Master" + "'and REPO_NAME='" + repoName.getText() + "'";
+            ResultSet rs2 = null;
+            try {
+                rs2 = st.executeQuery(query2);
+            } catch (SQLException ex) {
+                Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                if (rs2.next()) {
+                    //showMessageDialog(rootPane, "Repository Already Exists", "Error ", HEIGHT);
+                    //uname.setText("                                  ");
+                    //uemail.setText("                                  ");
+                    //upassword.setText("                                  ");
+                    //JOptionPane.showMessageDialog(rootPane, "YourAccount has been successfuly created", "Successful", HEIGHT);
+                } else {
+                    PreparedStatement sts = con.prepareStatement("insert into BRANCHES(NAME,ADDRESS,REPO_NAME) values(?,?,?)");
+                    sts.setString(1, "Master");
+                    sts.setString(2, addr+"/"+"Master");
+                    sts.setString(3, repoName.getText());
 
+                    sts.executeUpdate();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(createRepo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
 
