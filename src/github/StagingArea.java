@@ -5,8 +5,24 @@
  */
 package github;
 
+import static github.UnStaged.files;
+import static github.UnStaged.watch;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,13 +30,96 @@ import java.awt.Toolkit;
  */
 public class StagingArea extends javax.swing.JFrame {
 
+    public MyThread t=null;
+  
     /**
      * Creates new form UnStageArea
      */
     public StagingArea() {
-        initComponents();             
+        initComponents();      
+        t= new MyThread("D:\\TestStage",true);
+        t.start();
     }
 
+    public class MyThread extends Thread
+    {
+      public String address;
+      public boolean watch;
+      public MyThread(String Add, boolean w)
+      {
+          this.address=Add;
+          this.watch=w;
+      }
+    @Override
+    public void run()
+    {
+       try{
+             //StagingArea stgArea=new StagingArea();
+             //stgArea.setVisible(true);
+                WatchService watchService = FileSystems.getDefault().newWatchService();		
+		Path directory = Paths.get(address);
+                files=new ArrayList<String>();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss"); 
+		
+                int count=0;
+                
+		WatchKey watchKey = directory.register(watchService, 
+				StandardWatchEventKinds.ENTRY_CREATE,
+				StandardWatchEventKinds.ENTRY_DELETE,
+				StandardWatchEventKinds.ENTRY_MODIFY);
+		
+		while (watch==true) {
+                   // System.out.println("Checking...");
+                   // watchKey = watchService.poll(10, TimeUnit.MINUTES);
+                   
+			for (WatchEvent<?> event : watchKey.pollEvents()) {
+				System.out.println(event.kind());
+				Path file = directory.resolve((Path) event.context());
+                                System.out.println(file + " was last modified at " + sdf.format(file.toFile().lastModified()));
+                                if(event.kind().toString().equals("ENTRY_CREATE"))
+                                {
+                                    files.add(event.kind()+" -> "+file.toString()+" "+sdf.format(file.toFile().lastModified())); 
+                                    count++;
+                                    break;                              
+                                }     
+                                if(event.kind().toString().equals("ENTRY_DELETE"))
+                                {
+                                    files.add(event.kind()+" -> "+file.toString());                                     
+                                    break;
+                              
+                                }     
+                                 if(event.kind().toString().equals("ENTRY_MODIFY")&& count==0)
+                                {
+                                    files.add(event.kind()+" -> "+file.toString()+" "+sdf.format(file.toFile().lastModified()));                                 
+                                    break;                    
+                                }    
+                                 count=0;
+			}
+                       // watchKey.reset();
+                       Thread.sleep(500);
+                        StagingArea.UnstageArea.setText(null);
+                        for(String s: files)
+                        {
+                            StagingArea.UnstageArea.append(s +"\n");
+                            //u.stageArea.append(s +"\n");
+                        }
+		}
+                StagingArea.UnstageArea.setText(null);
+                        for(String s: files)
+                        {
+                            //u.UnstageArea.append(s +"\n");
+                            StagingArea.stageArea.append(s +"\n");
+                        }
+                       // JFrame f=new JFrame();  
+                       // JOptionPane.showMessageDialog(f,"Hello, Welcome to Javatpoint.");
+}       
+        catch (Exception e)
+        {
+            System.out.println("Something Went Wrong");
+        }     
+    }
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +148,7 @@ public class StagingArea extends javax.swing.JFrame {
         UnstageArea.setEditable(false);
         UnstageArea.setBackground(new java.awt.Color(153, 153, 153));
         UnstageArea.setColumns(20);
-        UnstageArea.setForeground(new java.awt.Color(255, 255, 255));
+        UnstageArea.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         UnstageArea.setRows(5);
         jScrollPane1.setViewportView(UnstageArea);
 
@@ -66,7 +165,7 @@ public class StagingArea extends javax.swing.JFrame {
         stageArea.setEditable(false);
         stageArea.setBackground(new java.awt.Color(153, 153, 153));
         stageArea.setColumns(20);
-        stageArea.setForeground(new java.awt.Color(255, 255, 255));
+        stageArea.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         stageArea.setRows(5);
         jScrollPane2.setViewportView(stageArea);
 
@@ -74,7 +173,7 @@ public class StagingArea extends javax.swing.JFrame {
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -87,15 +186,14 @@ public class StagingArea extends javax.swing.JFrame {
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -150,8 +248,8 @@ public class StagingArea extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -159,10 +257,8 @@ public class StagingArea extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageBtnActionPerformed
-        
-        UnStaged.watch=false;
-        //UnStaged.threadRunning=false;
-        
+ 
+        t.watch=false;
     }//GEN-LAST:event_stageBtnActionPerformed
 
     private void btnCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommitActionPerformed
@@ -201,20 +297,21 @@ public class StagingArea extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StagingArea().setVisible(true);
-            }
+           }
+        
         });
     }
-
+      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
-    public javax.swing.JTextArea UnstageArea;
+    public static javax.swing.JTextArea UnstageArea;
     private javax.swing.JButton btnCommit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextArea stageArea;
+    public static javax.swing.JTextArea stageArea;
     public static javax.swing.JButton stageBtn;
     // End of variables declaration//GEN-END:variables
 }

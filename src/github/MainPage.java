@@ -5,14 +5,26 @@
  */
 package github;
 
+import static github.UnStaged.files;
+import static github.UnStaged.watch;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -20,6 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -102,7 +115,7 @@ public class MainPage extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         createB = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        btnMonitorBranch = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         btnPullBranch = new javax.swing.JMenuItem();
@@ -181,8 +194,13 @@ public class MainPage extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem5);
 
-        jMenuItem16.setText("Monitor Branch");
-        jMenu2.add(jMenuItem16);
+        btnMonitorBranch.setText("Monitor Branch");
+        btnMonitorBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMonitorBranchActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnMonitorBranch);
 
         jMenuItem6.setText("Add New File");
         jMenu2.add(jMenuItem6);
@@ -242,6 +260,13 @@ public class MainPage extends javax.swing.JFrame {
         p.setVisible(true);
         
     }//GEN-LAST:event_btnPullBranchActionPerformed
+
+    private void btnMonitorBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorBranchActionPerformed
+      
+       StagingArea stgArea=new StagingArea();
+       stgArea.setVisible(true);
+        
+    }//GEN-LAST:event_btnMonitorBranchActionPerformed
     public void retrieve() throws SQLException {
         //Connection con = null;
         //Statement stat = null;
@@ -296,6 +321,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnMonitorBranch;
     private javax.swing.JMenuItem btnPullBranch;
     private javax.swing.JMenuItem createB;
     private javax.swing.JButton jButton1;
@@ -310,7 +336,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;

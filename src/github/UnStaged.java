@@ -29,19 +29,18 @@ import static javax.swing.UIManager.get;
 public class UnStaged {
     
     Branch branch;
-    List<String> files;
+    public static List<String>  files;
     //CurrentStatus();
-    public static boolean watch;
+    public static boolean watch=true;
     
     
      public UnStaged()
     { }
   
-    public void stageChange(String address) throws IOException
+    public static void stageChange(String address) throws IOException
     {             
         try{
-            
-             StagingArea stgArea=new StagingArea();
+            StagingArea stgArea=new StagingArea();
              stgArea.setVisible(true);
              WatchService watchService = FileSystems.getDefault().newWatchService();		
 		Path directory = Paths.get(address);

@@ -33,7 +33,11 @@ public class Branch {
         unstaged=null;
         
     }
-
+    public Branch()
+    {
+        
+    }
+    
     public String getName() {
         return name;
     }

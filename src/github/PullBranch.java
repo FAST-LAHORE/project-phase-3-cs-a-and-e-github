@@ -71,7 +71,7 @@ public class PullBranch extends javax.swing.JFrame {
 
         btnPull.setBackground(new java.awt.Color(0, 0, 0));
         btnPull.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnPull.setForeground(new java.awt.Color(255, 255, 255));
+        btnPull.setForeground(new java.awt.Color(153, 153, 153));
         btnPull.setText("Pull");
         btnPull.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
         btnPull.addActionListener(new java.awt.event.ActionListener() {
@@ -80,10 +80,10 @@ public class PullBranch extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 153, 153));
         jLabel4.setText("D:\\\\Repository\\Branch   ");
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 153, 153));
         jLabel5.setText("D:\\\\Repository\\Branch   ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
