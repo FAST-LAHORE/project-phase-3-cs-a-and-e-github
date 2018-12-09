@@ -105,7 +105,7 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        btnPullBranch = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -117,7 +117,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Git");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1130, 16);
+        jLabel1.setBounds(0, 0, 1130, 14);
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
@@ -190,8 +190,13 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem7.setText("Delete File");
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Pull Branch");
-        jMenu2.add(jMenuItem8);
+        btnPullBranch.setText("Pull Branch");
+        btnPullBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPullBranchActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnPullBranch);
 
         jMenuItem15.setText("Push Branch");
         jMenu2.add(jMenuItem15);
@@ -230,6 +235,13 @@ public class MainPage extends javax.swing.JFrame {
         this.setVisible(false);
         cb.setVisible(true);
     }//GEN-LAST:event_createBActionPerformed
+
+    private void btnPullBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPullBranchActionPerformed
+        
+        PullBranch p=new PullBranch();
+        p.setVisible(true);
+        
+    }//GEN-LAST:event_btnPullBranchActionPerformed
     public void retrieve() throws SQLException {
         //Connection con = null;
         //Statement stat = null;
@@ -284,6 +296,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnPullBranch;
     private javax.swing.JMenuItem createB;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -305,6 +318,5 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

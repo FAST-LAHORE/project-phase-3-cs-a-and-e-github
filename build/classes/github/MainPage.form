@@ -92,10 +92,13 @@
                 <Property name="text" type="java.lang.String" value="Delete File"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="btnPullBranch">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pull Branch"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPullBranchActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem15">
               <Properties>
