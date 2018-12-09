@@ -82,15 +82,16 @@ public class AddNewFile extends javax.swing.JFrame {
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
         // TODO add your handling code here:
  
-        Repository repo=new Repository();
-        repo.getName();
-        Branch bran=new Branch();
-        bran.getName();
+        //Repository repo=new Repository();
+        //repo.getName();
+       // Branch bran=new Branch();
+       // bran.getName();
         String filen=fname.getText();
         File f=null;
         boolean result;
         String fileSeparator = System.getProperty("file.separator");
-        String path = "C:" + File.separator + "Repository" + File.separator+"Branch" + File.separator+ filen;
+        //String path = "C:" + File.separator + "Repository" + File.separator+"Branch" + File.separator+ filen;
+        String path=MainPage.currRepository+ File.separator + MainPage.currBranch+ File.separator+ filen;
          f = new File(path);
          f.getParentFile().mkdirs(); 
         try {

@@ -25,6 +25,33 @@ public class DeleteFile extends javax.swing.JFrame {
     /**
      * Creates new form DeleteFile
      */
+      void RecursivePrint(File[] arr,int index,int level)  
+     { 
+         
+         // terminate condition 
+         if(index == arr.length) 
+             return; 
+           
+         // tabs for internal levels 
+         for (int i = 0; i < level; i++) 
+             System.out.print("\t"); 
+           
+         // for files 
+         if(arr[index].isFile()) 
+             //System.out.println(arr[index].getName()); 
+            textarea.append(arr[index].getName() +"\n");
+         // for sub-directories 
+         else if(arr[index].isDirectory()) 
+         { 
+            // System.out.println("[" + arr[index].getName() + "]"); 
+                textarea.append(arr[index].getName() +"\n");
+             // recursion for sub-directories 
+             RecursivePrint(arr[index].listFiles(), 0, level + 1); 
+         } 
+            
+         // recursion for main directory 
+         RecursivePrint(arr,++index, level); 
+    } 
     public DeleteFile() {
         initComponents();
     }
@@ -43,6 +70,8 @@ public class DeleteFile extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         fname = new javax.swing.JTextField();
         ok = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textarea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,47 +98,52 @@ public class DeleteFile extends javax.swing.JFrame {
             }
         });
 
+        textarea.setColumns(20);
+        textarea.setRows(5);
+        jScrollPane1.setViewportView(textarea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(30, 30, 30)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(fname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                .addComponent(bname, javax.swing.GroupLayout.Alignment.LEADING))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(fname, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bname, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bname, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bname, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ok, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     
     private void bnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bnameActionPerformed
@@ -120,15 +154,31 @@ public class DeleteFile extends javax.swing.JFrame {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         // TODO add your handling code here:
-         Repository repo=new Repository();
-        repo.getName();
+         String maindirpath="C:\\Repository\\Branch";
+          File maindir = new File(maindirpath); 
+        
+        if(maindir.exists() && maindir.isDirectory()) 
+        { 
+            // array for files and sub-directories  
+            // of directory pointed by maindir 
+            File arr[] = maindir.listFiles(); 
+              
+           /* System.out.println("**********************************************"); 
+            System.out.println("Files from main directory : " + maindir); 
+            System.out.println("**********************************************"); */
+              
+            // Calling recursive method 
+            RecursivePrint(arr,0,0);  
+       }  
+        // Repository repo=new Repository();
+        //repo.getName();
          String filen=fname.getText();
          String branchn=bname.getText();
          File f=null;
         boolean result;
         String fileSeparator = System.getProperty("file.separator");
-        File my_file_dir = new File( File.separator+"C:"+ File.separator+"Repository"+ File.separator+branchn);
-      
+       // File my_file_dir = new File( File.separator+"C:"+ File.separator+"Repository"+ File.separator+branchn);
+      File my_file_dir = new File( File.separator+MainPage.currRepository+ File.separator+ File.separator+branchn);
         //JOptionPane.showMessageDialog(rootPane, "Check", "Success", HEIGHT);
        // Path firstPath = Paths.get("/C:/Repository/Branch/ulu");
         if( my_file_dir.exists())
@@ -192,6 +242,8 @@ public class DeleteFile extends javax.swing.JFrame {
     private javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton ok;
+    private javax.swing.JTextArea textarea;
     // End of variables declaration//GEN-END:variables
 }
