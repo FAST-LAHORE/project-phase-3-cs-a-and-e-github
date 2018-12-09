@@ -39,6 +39,13 @@ public class Repository {
 
         return name;
     }
+    
+     public void AddComment(String comment)
+    {
+        Comment c=new Comment();
+        c.Add(comment,this.name);
+        comments.add(c);
+    }
 
     public static void deleteBranch(File file) throws IOException {
         if (file.isDirectory()) {

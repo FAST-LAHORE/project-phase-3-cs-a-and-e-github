@@ -174,7 +174,14 @@ public class MainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPage().setVisible(true);
+            Login l=new Login();
+            l.setVisible(true);
+//            Comment c=new Comment();
+//            c.Add("Testing this usecase", "github");
+//            String g="github";
+//            c.ViewComment(g);
+        
+                //new MainPage().setVisible(true);
             }
         });
     }

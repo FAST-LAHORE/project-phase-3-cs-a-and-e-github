@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package github;
-
+//Testing
 import java.io.IOException;
 
 /**
@@ -19,10 +19,12 @@ public class Github {
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
 
-        Branch b=new Branch();
-        b.showUnstage();
+//        Branch b=new Branch();
+//        b.showUnstage();
         
        // b.stageChanged();
+       
+       
     }
 
 }
