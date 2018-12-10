@@ -91,7 +91,8 @@ public class AddNewFile extends javax.swing.JFrame {
         boolean result;
         String fileSeparator = System.getProperty("file.separator");
         //String path = "C:" + File.separator + "Repository" + File.separator+"Branch" + File.separator+ filen;
-        String path=MainPage.currRepository+ File.separator + MainPage.currBranch+ File.separator+ filen;
+        String path;
+        path = File.separator+ MainPage.currRepository + MainPage.currBranch+ File.separator+ filen;
          f = new File(path);
          f.getParentFile().mkdirs(); 
         try {

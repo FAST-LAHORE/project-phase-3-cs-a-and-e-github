@@ -19,6 +19,7 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -31,7 +32,8 @@ import javax.swing.JOptionPane;
 public class StagingArea extends javax.swing.JFrame {
 
     public MyThread t=null;
-  
+    Repository rep=null;
+    String currUser=null;
     /**
      * Creates new form UnStageArea
      */
@@ -39,6 +41,12 @@ public class StagingArea extends javax.swing.JFrame {
         initComponents();      
         t= new MyThread("D:\\TestStage",true);
         t.start();
+    }
+
+   public StagingArea(Repository currrep, String currUser) {
+         initComponents(); 
+        rep=currrep;
+        this.currUser=currUser;
     }
 
     public class MyThread extends Thread
@@ -129,6 +137,11 @@ public class StagingArea extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Commit_message = new javax.swing.JFrame();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        mess = new javax.swing.JTextArea();
+        ok_comm = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         UnstageArea = new javax.swing.JTextArea();
@@ -139,6 +152,49 @@ public class StagingArea extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         stageBtn = new javax.swing.JButton();
         btnCommit = new javax.swing.JButton();
+
+        Commit_message.setMinimumSize(new java.awt.Dimension(400, 350));
+
+        jLabel3.setText("Enter Commit message:");
+
+        mess.setColumns(20);
+        mess.setRows(5);
+        jScrollPane3.setViewportView(mess);
+
+        ok_comm.setText("Commit");
+        ok_comm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ok_commActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Commit_messageLayout = new javax.swing.GroupLayout(Commit_message.getContentPane());
+        Commit_message.getContentPane().setLayout(Commit_messageLayout);
+        Commit_messageLayout.setHorizontalGroup(
+            Commit_messageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Commit_messageLayout.createSequentialGroup()
+                .addGroup(Commit_messageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Commit_messageLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(Commit_messageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(Commit_messageLayout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(ok_comm)))
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+        Commit_messageLayout.setVerticalGroup(
+            Commit_messageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Commit_messageLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(ok_comm)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -263,7 +319,26 @@ public class StagingArea extends javax.swing.JFrame {
 
     private void btnCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommitActionPerformed
         // TODO add your handling code here:
+        if(StagingArea.stageArea.getText().equals(null)){
+            JOptionPane.showMessageDialog(rootPane, "Nothing to commit", "Error", HEIGHT);
+        }else{
+             Commit_message.setTitle("Commit Message");
+             Commit_message.setVisible(true);
+        }
     }//GEN-LAST:event_btnCommitActionPerformed
+
+    private void ok_commActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_commActionPerformed
+        // TODO add your handling code here:
+            String text=StagingArea.stageArea.getText();
+        if(mess.getText().equals(null)){
+            JOptionPane.showMessageDialog(rootPane, "Enter Commit Message", "Error", HEIGHT);
+        }
+        else{
+            Commit c=new Commit(this.currUser,rep.No_of_Commits,mess.getText(),Calendar.getInstance());
+            c.setChanges(text);
+            rep.branches.get(rep.branches.size()-1).commits.add(c);
+        }
+    }//GEN-LAST:event_ok_commActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,14 +378,19 @@ public class StagingArea extends javax.swing.JFrame {
     }
       
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame Commit_message;
     private javax.swing.JPanel MainPanel;
     public static javax.swing.JTextArea UnstageArea;
     private javax.swing.JButton btnCommit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea mess;
+    private javax.swing.JButton ok_comm;
     public static javax.swing.JTextArea stageArea;
     public static javax.swing.JButton stageBtn;
     // End of variables declaration//GEN-END:variables

@@ -31,6 +31,7 @@ public class Branch {
         branches=null;
         staged=null;
         unstaged=null;
+        commits.add(c);
         
     }
     public Branch()
