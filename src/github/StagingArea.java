@@ -110,8 +110,7 @@ public class StagingArea extends javax.swing.JFrame {
                             //u.UnstageArea.append(s +"\n");
                             StagingArea.stageArea.append(s +"\n");
                         }
-                       // JFrame f=new JFrame();  
-                       // JOptionPane.showMessageDialog(f,"Hello, Welcome to Javatpoint.");
+   
 }       
         catch (Exception e)
         {
