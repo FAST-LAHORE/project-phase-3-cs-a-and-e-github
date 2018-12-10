@@ -8,6 +8,7 @@ package github;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Repository {
     List<Branch> branches=new ArrayList<Branch>();
     private int id;
     String name;
-    private int No_of_Commits;
+    public int No_of_Commits;
     public String Address;
 
     //CreateBranch(String Name);
@@ -29,7 +30,7 @@ public class Repository {
     public Repository(String n, String ad) {
         comments=null;
         name = n;
-        Commit c = new Commit("salman", 12345, "Just Commited");
+        Commit c = new Commit("salman", 12345, "Just Commited",Calendar.getInstance());
         Branch b = new Branch("Master",c);
         branches.add(b);
         id = 1;
@@ -42,12 +43,37 @@ public class Repository {
     }
 
     Branch CreateBranch(String Name) {
-        Commit c = new Commit("salman", 12346, "Just Commited");
+        Commit c = new Commit("salman", 12346, "Just Commited",Calendar.getInstance());
         Branch b = new Branch(Name,c);
         branches.add(b);
         return b;
     }
-
+public String FindFile(String fileName) throws IOException{
+           String fileSeparator = System.getProperty("file.separator");
+           String addr=Address;
+           for(Branch b:branches){
+               addr=addr+ fileSeparator+b.getName();
+               for(Files f:b.files){
+                   if(f.getName().equals(fileName)){
+                        addr=addr+ fileSeparator+f.getName();
+                        return addr;
+                   }
+               }
+               addr.replace(fileSeparator+b.getName(), "");
+               for(Branch ChildB:b.branches){
+                    addr=addr+ fileSeparator+ChildB.getName();
+                    for(Files f:ChildB.files){
+                        if(f.getName().equals(fileName)){
+                            addr=addr+ fileSeparator+f.getName();
+                            return addr;
+                        }
+                    }
+               }
+               addr.replace(fileSeparator+b.getName(), "");
+          }
+           addr="false";
+           return addr;
+      }
     public static void deleteBranch(File file) throws IOException {
         if (file.isDirectory()) {
 

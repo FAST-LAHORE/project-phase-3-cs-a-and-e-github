@@ -13,4 +13,11 @@ public class InternalRepository extends Repository{
 
           
     //Push();
+
+    public InternalRepository(String n, String ad) {
+        super(n, ad);
+    }
+
+          
+    //Push();
 }

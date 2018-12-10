@@ -10,6 +10,7 @@ import static github.UnStaged.watch;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import static java.awt.image.ImageObserver.HEIGHT;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -43,7 +44,7 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
-    public String currRepository = null;
+   public static String currRepository = null;
     public String currBranch = null;
     List<Repository> repss = new ArrayList<Repository>();
     Repository currrep = null;
@@ -100,6 +101,21 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FFile = new javax.swing.JFrame();
+        jLabel4 = new javax.swing.JLabel();
+        rep = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        Fname = new javax.swing.JTextField();
+        find = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cloneFrame = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        srcAddress = new javax.swing.JTextField();
+        dstAddress = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnPull = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -107,11 +123,12 @@ public class MainPage extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        AddComment = new javax.swing.JMenuItem();
+        btnViewComments = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        clone = new javax.swing.JMenuItem();
         deleteBranch = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        findfile = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         createB = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -122,6 +139,124 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
+
+        FFile.setMinimumSize(new java.awt.Dimension(400, 300));
+
+        jLabel4.setText("Enter Repository path:");
+
+        jLabel5.setText("File Name:");
+
+        find.setText("Find");
+
+        javax.swing.GroupLayout FFileLayout = new javax.swing.GroupLayout(FFile.getContentPane());
+        FFile.getContentPane().setLayout(FFileLayout);
+        FFileLayout.setHorizontalGroup(
+            FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FFileLayout.createSequentialGroup()
+                .addGroup(FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FFileLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(72, 72, 72)
+                        .addGroup(FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(rep)
+                            .addComponent(Fname, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                    .addGroup(FFileLayout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(find)))
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        FFileLayout.setVerticalGroup(
+            FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FFileLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(rep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(Fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(find)
+                .addGap(89, 89, 89))
+        );
+
+        jLabel3.setText("jLabel3");
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Source Address: ");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Destination Address:");
+
+        srcAddress.setBackground(new java.awt.Color(153, 153, 153));
+        srcAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        srcAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
+
+        dstAddress.setBackground(new java.awt.Color(153, 153, 153));
+        dstAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        dstAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
+
+        jLabel8.setText("        Pull");
+
+        btnPull.setBackground(new java.awt.Color(0, 0, 0));
+        btnPull.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnPull.setForeground(new java.awt.Color(153, 153, 153));
+        btnPull.setText("Clone");
+        btnPull.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
+        btnPull.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPullActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPull, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dstAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(srcAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 144, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(srcAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dstAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(btnPull)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+
+        cloneFrame.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -159,14 +294,32 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem2.setText("Create New Branch");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Add Comments");
-        jMenu1.add(jMenuItem3);
+        AddComment.setText("Add Comments");
+        AddComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCommentActionPerformed(evt);
+            }
+        });
+        jMenu1.add(AddComment);
+
+        btnViewComments.setText("View Comments");
+        btnViewComments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCommentsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnViewComments);
 
         jMenuItem18.setText("Show All Repositories");
         jMenu1.add(jMenuItem18);
 
-        jMenuItem4.setText("Clone Repository");
-        jMenu1.add(jMenuItem4);
+        clone.setText("Clone Repository");
+        clone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cloneActionPerformed(evt);
+            }
+        });
+        jMenu1.add(clone);
 
         deleteBranch.setText("Delete Branch");
         deleteBranch.addActionListener(new java.awt.event.ActionListener() {
@@ -176,8 +329,13 @@ public class MainPage extends javax.swing.JFrame {
         });
         jMenu1.add(deleteBranch);
 
-        jMenuItem14.setText("Find File");
-        jMenu1.add(jMenuItem14);
+        findfile.setText("Find File");
+        findfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findfileActionPerformed(evt);
+            }
+        });
+        jMenu1.add(findfile);
 
         jMenuBar1.add(jMenu1);
 
@@ -273,7 +431,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnMonitorBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorBranchActionPerformed
       
-       StagingArea stgArea=new StagingArea();
+       StagingArea stgArea=new StagingArea(currrep,currUser);
        stgArea.setVisible(true);
         
     }//GEN-LAST:event_btnMonitorBranchActionPerformed
@@ -287,6 +445,69 @@ public class MainPage extends javax.swing.JFrame {
          DeleteBranch d=new DeleteBranch();
          d.setVisible(true);
     }//GEN-LAST:event_deleteBranchActionPerformed
+
+    private void findfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findfileActionPerformed
+        // TODO add your handling code here:
+         FFile.setTitle("Find File");
+        //rep.setText(repss.get(repss.size()-1).getName());
+        rep.setText("name");
+        FFile.setVisible(true);
+        //repss.get(repss.size()-1).FindFile(fileName);
+    }//GEN-LAST:event_findfileActionPerformed
+
+    private void cloneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cloneActionPerformed
+        // TODO add your handling code here:
+        cloneFrame.setTitle("Clone Repository");
+        cloneFrame.setVisible(true);
+    }//GEN-LAST:event_cloneActionPerformed
+
+    private void btnPullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPullActionPerformed
+
+        // File srcFolder = new File("D:\\TestStage");
+        // File destFolder = new File("D:\\CheckPull");
+        File srcFolder = new File(srcAddress.getText());
+        File destFolder = new File(dstAddress.getText());
+        try {
+            ExternalRepository.clone(srcFolder, destFolder);
+            JOptionPane.showMessageDialog(rootPane, "Branch Has Been Pulled", "Success", HEIGHT);
+        } catch (IOException ex) {
+            Logger.getLogger(PullBranch.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Invalid Address or Empty Field", "Error", HEIGHT);
+        }
+    }//GEN-LAST:event_btnPullActionPerformed
+
+    private void AddCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCommentActionPerformed
+        if (MainPage.currRepository!=null){
+            Addcommentform cf=new Addcommentform();
+            cf.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane,"No Current Repository exists!","", HEIGHT);
+        }
+    }//GEN-LAST:event_AddCommentActionPerformed
+
+    private void btnViewCommentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCommentsActionPerformed
+       if (MainPage.currRepository!=null){
+            ViewCommentform vcf=new ViewCommentform();
+            vcf.setVisible(true);
+            vcf.Display();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane,"No Current Repository exists!","", HEIGHT);
+        }
+    }//GEN-LAST:event_btnViewCommentsActionPerformed
+    private void findActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        String rname=rep.getText();
+        String fname=Fname.getText();
+        File my_file_dir = new File( File.separator+MainPage.currRepository+ File.separator+ File.separator+currBranch);
+     my_file_dir=my_file_dir+File.separator+fname;
+        if( my_file_dir.exists()){
+            JOptionPane.showMessageDialog(rootPane, "File exists", "Success", HEIGHT);
+        }
+    }
     public void retrieve() throws SQLException {
         //Connection con = null;
         //Statement stat = null;
@@ -341,27 +562,43 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddComment;
+    private javax.swing.JFrame FFile;
+    private javax.swing.JTextField Fname;
     private javax.swing.JMenuItem btnMonitorBranch;
+    private javax.swing.JButton btnPull;
     private javax.swing.JMenuItem btnPullBranch;
+    private javax.swing.JMenuItem btnViewComments;
+    private javax.swing.JMenuItem clone;
+    private javax.swing.JFrame cloneFrame;
     private javax.swing.JMenuItem createB;
     private javax.swing.JMenuItem deleteBranch;
+    private javax.swing.JTextField dstAddress;
+    private javax.swing.JButton find;
+    private javax.swing.JMenuItem findfile;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField rep;
+    private javax.swing.JTextField srcAddress;
     // End of variables declaration//GEN-END:variables
 }

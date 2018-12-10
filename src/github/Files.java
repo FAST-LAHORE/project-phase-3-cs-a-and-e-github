@@ -17,5 +17,9 @@ public class Files {
     public Files(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
     
 }
