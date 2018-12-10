@@ -31,7 +31,7 @@
                           <Component id="find" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="97" max="32767" attributes="0"/>
+                  <EmptySpace pref="101" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -58,7 +58,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enter Repository name:"/>
+            <Property name="text" type="java.lang.String" value="Enter Repository path:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="rep">

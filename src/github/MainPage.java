@@ -141,7 +141,7 @@ public class MainPage extends javax.swing.JFrame {
 
         FFile.setMinimumSize(new java.awt.Dimension(400, 300));
 
-        jLabel4.setText("Enter Repository name:");
+        jLabel4.setText("Enter Repository path:");
 
         jLabel5.setText("File Name:");
 
@@ -165,7 +165,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(FFileLayout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(find)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         FFileLayout.setVerticalGroup(
             FFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,35 +465,10 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String rname=rep.getText();
         String fname=Fname.getText();
-        if(rname.equals(repss.get(repss.size()-1).getName())){
-            try {
-                String t=repss.get(repss.size()-1).FindFile(fname);
-                if(t.equals("false")){
-                      JOptionPane.showMessageDialog(rootPane, "File not found", "Error", HEIGHT);
-                }else{
-                    JOptionPane.showMessageDialog(rootPane, "File found at "+t, "Successful", HEIGHT);
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }else{
-            for(Repository r:repss){
-                if(rname.equals(r.getName())){
-                try {
-                    String t=r.FindFile(fname);
-                    if(t.equals("false")){
-                          JOptionPane.showMessageDialog(rootPane, "File not found", "Error", HEIGHT);
-                          
-                    }else{
-                        JOptionPane.showMessageDialog(rootPane, "File found at "+t, "Successful", HEIGHT);
-                    }
-                } catch (IOException ex) {
-                    Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                break;
-                }
-            }
+        File my_file_dir = new File( File.separator+MainPage.currRepository+ File.separator+ File.separator+currBranch);
+     my_file_dir=my_file_dir+File.separator+fname;
+        if( my_file_dir.exists()){
+            JOptionPane.showMessageDialog(rootPane, "File exists", "Success", HEIGHT);
         }
     }
     public void retrieve() throws SQLException {
