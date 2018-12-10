@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,6 +22,7 @@ public class Comment {
     
     private String comment;
     Repository repository;
+    List<String> comments=new ArrayList<String>();
     
     //ViewComment();
     Connection conn= null;
@@ -63,7 +66,7 @@ public class Comment {
             System.out.println(e);
         }
     }
-    public void ViewComment(String repositoryName)
+ public List<String> ViewComment(String repositoryName)
     {
         try
         {
@@ -74,14 +77,17 @@ public class Comment {
 //            st = conn.createStatement();
 //            rs=st.executeQuery("Select com from Abdurrehman.CommentHistory where repname='git'");
          // System.out.println("success");
+         int i=0;
             while(rs.next())
             {     
-                System.out.println("Comment on "+repositoryName+"\t     "+rs.getString("com"));
+                comments.add(rs.getString("com"));
+                //System.out.println(comments.remove(i));                
             }
         }
         catch(SQLException e)
         {
             System.out.println(e);
         }
+        return comments;
     }
 }

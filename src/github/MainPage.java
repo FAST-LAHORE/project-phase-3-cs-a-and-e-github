@@ -44,7 +44,7 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
-    public String currRepository = null;
+   public static String currRepository = null;
     public String currBranch = null;
     List<Repository> repss = new ArrayList<Repository>();
     Repository currrep = null;
@@ -123,7 +123,8 @@ public class MainPage extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        AddComment = new javax.swing.JMenuItem();
+        btnViewComments = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         clone = new javax.swing.JMenuItem();
         deleteBranch = new javax.swing.JMenuItem();
@@ -293,8 +294,21 @@ public class MainPage extends javax.swing.JFrame {
         jMenuItem2.setText("Create New Branch");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Add Comments");
-        jMenu1.add(jMenuItem3);
+        AddComment.setText("Add Comments");
+        AddComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCommentActionPerformed(evt);
+            }
+        });
+        jMenu1.add(AddComment);
+
+        btnViewComments.setText("View Comments");
+        btnViewComments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCommentsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnViewComments);
 
         jMenuItem18.setText("Show All Repositories");
         jMenu1.add(jMenuItem18);
@@ -461,6 +475,29 @@ public class MainPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Invalid Address or Empty Field", "Error", HEIGHT);
         }
     }//GEN-LAST:event_btnPullActionPerformed
+
+    private void AddCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCommentActionPerformed
+        if (MainPage.currRepository!=null){
+            Addcommentform cf=new Addcommentform();
+            cf.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane,"No Current Repository exists!","", HEIGHT);
+        }
+    }//GEN-LAST:event_AddCommentActionPerformed
+
+    private void btnViewCommentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCommentsActionPerformed
+       if (MainPage.currRepository!=null){
+            ViewCommentform vcf=new ViewCommentform();
+            vcf.setVisible(true);
+            vcf.Display();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane,"No Current Repository exists!","", HEIGHT);
+        }
+    }//GEN-LAST:event_btnViewCommentsActionPerformed
     private void findActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         String rname=rep.getText();
@@ -525,11 +562,13 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddComment;
     private javax.swing.JFrame FFile;
     private javax.swing.JTextField Fname;
     private javax.swing.JMenuItem btnMonitorBranch;
     private javax.swing.JButton btnPull;
     private javax.swing.JMenuItem btnPullBranch;
+    private javax.swing.JMenuItem btnViewComments;
     private javax.swing.JMenuItem clone;
     private javax.swing.JFrame cloneFrame;
     private javax.swing.JMenuItem createB;
@@ -555,7 +594,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
